@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - Community Information and Action App</title>
+    <link rel="stylesheet" href="user-management.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
+</head>
+<body>
+    <div class="admin-dashboard-container">
+        <header>
+            <h1>User Management</h1>
+            <div class="admin-header">
+                <input type="text" id="search-users" placeholder="Search users..." class="search-bar">
+                <button id="add-user-btn" class="add-user-btn">Add User</button>
+                <div class="admin-profile">
+                    <img src="profile-pic.jpg" alt="Admin Profile Picture" class="profile-pic"> <!-- Replace with actual image -->
+                    <span>[Admin Name]</span> <!-- Replace with actual admin name -->
+                </div>
+            </div>
+        </header>
+
+        <section class="user-list-section">
+            <h2>Users</h2>
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="user-list">
+                    <!-- User rows will be dynamically populated here -->
+                </tbody>
+            </table>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Community Information and Action App. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for functionality -->
+    <script src="user-management.js"></script>
+</body>
+</html>

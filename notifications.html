@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - Community Information and Action App</title>
+    <link rel="stylesheet" href="notifications.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
+</head>
+<body>
+    <div class="admin-dashboard-container">
+        <header>
+            <h1>Notifications</h1>
+            <div class="admin-header">
+                <input type="text" id="search-notifications" placeholder="Search notifications..." class="search-bar">
+                <div class="admin-profile">
+                    <img src="profile-pic.jpg" alt="Admin Profile Picture" class="profile-pic"> <!-- Replace with actual image -->
+                    <span>[Admin Name]</span> <!-- Replace with actual admin name -->
+                </div>
+            </div>
+        </header>
+
+        <section class="notification-list-section">
+            <h2>Notifications</h2>
+            <table class="notification-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="notification-list">
+                    <!-- Notification rows will be dynamically populated here -->
+                </tbody>
+            </table>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Community Information and Action App. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for functionality -->
+    <script src="notifications.js"></script>
+</body>
+</html>

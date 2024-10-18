@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Request - Community Information and Action App</title>
+    <link rel="stylesheet" href="service-request.css">
+</head>
+<body>
+    <div class="service-request-container">
+        <header>
+            <h1>Request a Service</h1>
+        </header>
+
+        <form id="service-request-form">
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="service-type">Service Type:</label>
+                <select id="service-type" name="service-type" required>
+                    <option value="">Select a service...</option>
+                    <option value="maintenance">Maintenance</option>
+                    <option value="cleaning">Cleaning</option>
+                    <option value="repair">Repair</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description of the issue:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn">Submit Request</button>
+        </form>
+
+        <p><a href="dashboard.html">Back to Dashboard</a></p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Community Information and Action App. All rights reserved.</p>
+    </footer>
+</body>
+</html>
