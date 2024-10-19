@@ -139,6 +139,12 @@ def recreate_database():
         db.create_all()
     print("Database recreated successfully.")
 
+
+## CHAT APPLICATION
+
+
+## 
+
 if __name__ == "__main__":
     recreate_database()  # This will recreate the database. Comment out after first run.
     app.run(debug=True)
