@@ -3,51 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Information and Action App</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Community Hub - Connect, Engage, Thrive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        warmGray: {
+                            50: '#FAFAF9',
+                            100: '#F5F5F4',
+                            200: '#E7E5E4',
+                            300: '#D6D3D1',
+                            400: '#A8A29E',
+                            500: '#78716C',
+                            600: '#57534E',
+                            700: '#44403C',
+                            800: '#292524',
+                            900: '#1C1917',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #FDE68A 0%, #FCA5A5 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>Welcome to the Community Information and Action App</h1>
-        <p>Your go-to platform for community engagement and emergency services.</p>
-        <nav>
-            <ul>
-                <li><a href="information-hub.html">Information Hub</a></li>
-                <li><a href="service-request.html">Request Services</a></li>
-                <li><a href="issue-reporting.html">Report Issues</a></li>
-                <li><a href="event-calendar.html">Upcoming Events</a></li>
-                <li><a href="forums.html">Community Forums</a></li>
-            </ul>
-        </nav>
+<body class="bg-warmGray-50 font-sans">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <nav class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-warmGray-800">Community Hub</a>
+                <ul class="flex space-x-6">
+                    <li><a href="/html/dashboard.html" class="text-warmGray-600 hover:text-warmGray-900">Home</a></li>
+                    <li><a href="/html/service-request.html" class="text-warmGray-600 hover:text-warmGray-900">Services</a></li>
+                    <li><a href="/html/event-calendar.htmls" class="text-warmGray-600 hover:text-warmGray-900">Events</a></li>
+                    <li><a href="/html/" class="text-warmGray-600 hover:text-warmGray-900">Connect</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <section class="hero">
-            <h2>Stay Connected, Stay Safe!</h2>
-            <p>Join us in making our community a better place. Get involved, report issues, and stay informed.</p>
-            <a class="cta-button" href="login.html">Get Started</a>
-        </section>
-
-        <section class="features">
-            <h2>Features</h2>
-            <div class="feature-item">
-                <h3>Emergency Services</h3>
-                <p>Quick access to emergency contacts and services at your fingertips.</p>
-            </div>
-            <div class="feature-item">
-                <h3>Community Engagement</h3>
-                <p>Participate in discussions and share your thoughts with fellow community members.</p>
-            </div>
-            <div class="feature-item">
-                <h3>Service Requests</h3>
-                <p>Easily report issues or request services from local authorities.</p>
+        <section class="gradient-bg py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-warmGray-900 mb-6">Welcome to Your Community Hub</h1>
+                <p class="text-xl text-warmGray-800 mb-8">Connect, engage, and thrive together. Your platform for a stronger community.</p>
+                <a href="/html/register.html" class="bg-warmGray-800 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-warmGray-700 transition duration-300">Get Started</a>
             </div>
         </section>
 
-        <footer>
-            <p>&copy; 2024 Community Information and Action App. All rights reserved.</p>
-        </footer>
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-warmGray-800 mb-12">How We Empower Our Community</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300">
+                        <h3 class="text-xl font-semibold text-warmGray-800 mb-4">Connect Instantly</h3>
+                        <p class="text-warmGray-600">Stay informed with real-time updates and emergency alerts.</p>
+                    </div>
+                    <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300">
+                        <h3 class="text-xl font-semibold text-warmGray-800 mb-4">Engage Actively</h3>
+                        <p class="text-warmGray-600">Participate in local events, forums, and volunteer opportunities.</p>
+                    </div>
+                    <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300">
+                        <h3 class="text-xl font-semibold text-warmGray-800 mb-4">Access Services</h3>
+                        <p class="text-warmGray-600">Easily request and track community services all in one place.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-warmGray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-warmGray-800 mb-12">Upcoming Community Events</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-warmGray-800 mb-2">Neighborhood Clean-up</h3>
+                        <p class="text-warmGray-600 mb-4">Join us this Saturday for our monthly community clean-up event.</p>
+                        <a href="#" class="text-warmGray-800 font-semibold hover:underline">Learn More</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-warmGray-800 mb-2">Local Art Fair</h3>
+                        <p class="text-warmGray-600 mb-4">Discover and support local artists at our upcoming art fair.</p>
+                        <a href="#" class="text-warmGray-800 font-semibold hover:underline">Learn More</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-warmGray-800 mb-2">Town Hall Meeting</h3>
+                        <p class="text-warmGray-600 mb-4">Voice your opinions at our next town hall meeting on community development.</p>
+                        <a href="#" class="text-warmGray-800 font-semibold hover:underline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold text-warmGray-800 mb-8">Ready to Get Involved?</h2>
+                <p class="text-xl text-warmGray-600 mb-8">Join our community today and make a difference.</p>
+                <a href="#" class="bg-warmGray-800 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-warmGray-700 transition duration-300">Sign Up Now</a>
+            </div>
+        </section>
     </main>
 
+    <footer class="bg-warmGray-800 text-warmGray-200 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/3 mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Community Hub</h3>
+                    <p>Connecting and empowering our community.</p>
+                </div>
+                <div class="w-full md:w-1/3 mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul>
+                        <li><a href="#" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Services</a></li>
+                        <li><a href="#" class="hover:text-white">Events</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/3">
+                    <h3 class="text-xl font-semibold mb-4">Stay Connected</h3>
+                    <p>Sign up for our newsletter to stay updated.</p>
+                    <form class="mt-4">
+                        <input type="email" placeholder="Enter your email" class="bg-warmGray-700 text-white px-4 py-2 rounded-l-full focus:outline-none">
+                        <button type="submit" class="bg-warmGray-600 text-white px-4 py-2 rounded-r-full hover:bg-warmGray-500 transition duration-300">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p>&copy; 2024 Community Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

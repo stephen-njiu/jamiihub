@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Community Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        warmGray: {
+                            50: '#FAFAF9',
+                            100: '#F5F5F4',
+                            200: '#E7E5E4',
+                            300: '#D6D3D1',
+                            400: '#A8A29E',
+                            500: '#78716C',
+                            600: '#57534E',
+                            700: '#44403C',
+                            800: '#292524',
+                            900: '#1C1917',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #FDE68A 0%, #FCA5A5 100%);
+        }
+    </style>
+</head>
+<body class="bg-warmGray-50 font-sans">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <nav class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-warmGray-800">Community Hub</a>
+                <ul class="flex space-x-6">
+                    <li><a href="/html/dashboard.html" class="text-warmGray-600 hover:text-warmGray-900">Home</a></li>
+                    <li><a href="/html/service-request.html" class="text-warmGray-600 hover:text-warmGray-900">Services</a></li>
+                    <li><a href="/html/event-calendar.html" class="text-warmGray-600 hover:text-warmGray-900">Events</a></li>
+                    <li><a href="/html/" class="text-warmGray-600 hover:text-warmGray-900">Connect</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-16">
+        <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+            <header class="text-center mb-6">
+                <h1 class="text-2xl font-bold text-warmGray-800">Create Your Account</h1>
+            </header>
+
+            <form id="registration-form">
+                <div class="form-group mb-4">
+                    <label for="fullname" class="block text-sm font-semibold text-warmGray-600">Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" required class="mt-1 p-2 w-full border border-warmGray-300 rounded focus:outline-none focus:ring focus:ring-warmGray-400">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="email" class="block text-sm font-semibold text-warmGray-600">Email:</label>
+                    <input type="email" id="email" name="email" required class="mt-1 p-2 w-full border border-warmGray-300 rounded focus:outline-none focus:ring focus:ring-warmGray-400">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="username" class="block text-sm font-semibold text-warmGray-600">Username:</label>
+                    <input type="text" id="username" name="username" required class="mt-1 p-2 w-full border border-warmGray-300 rounded focus:outline-none focus:ring focus:ring-warmGray-400">
+                </div>
+
+                <div class="form-group mb-6">
+                    <label for="password" class="block text-sm font-semibold text-warmGray-600">Password:</label>
+                    <input type="password" id="password" name="password" required class="mt-1 p-2 w-full border border-warmGray-300 rounded focus:outline-none focus:ring focus:ring-warmGray-400">
+                </div>
+
+                <button type="submit" class="w-full bg-warmGray-800 text-white py-3 rounded-lg hover:bg-warmGray-700 transition duration-300">Register</button>
+
+                <p class="mt-4 text-center text-warmGray-600">Already have an account? <a href="login.html" class="text-warmGray-800 hover:underline">Login here</a></p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-warmGray-800 text-warmGray-200 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Community Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Link to the Firebase and auth scripts -->
+    <script type="module" src="/backend/firebase.js"></script>
+    <script type="module" src="/backend/auth.js"></script>
+</body>
+</html>

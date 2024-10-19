@@ -1,0 +1,87 @@
+/* Reset some default styles */
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    background: #007BFF;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+}
+
+header nav ul {
+    list-style-type: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Hero section styling */
+.hero {
+    background: url('hero-image.jpg') no-repeat center center/cover; /* Add your hero image here */
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2em;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28A745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Features section styling */
+.features {
+    padding: 20px;
+}
+
+.features h2 {
+    text-align: center;
+}
+
+.feature-item {
+    background-color: white;
+    margin: 15px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.feature-item h3 {
+    color: #007BFF; /* Feature title color */
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 10px 0;
+}

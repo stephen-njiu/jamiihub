@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report an Issue - Community Information and Action App</title>
+    <link rel="stylesheet" href="issue-reporting.css">
+</head>
+<body>
+    <div class="issue-reporting-container">
+        <header>
+            <h1>Report an Issue</h1>
+        </header>
+
+        <form id="issue-reporting-form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="issue-type">Issue Type:</label>
+                <select id="issue-type" name="issue-type" required>
+                    <option value="">Select an issue type...</option>
+                    <option value="maintenance">Maintenance</option>
+                    <option value="safety">Safety Concern</option>
+                    <option value="environmental">Environmental Issue</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Name of County/Region:</label>
+                <input type="text" id="location" name="location" required placeholder="County e.g Nyeri">
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required placeholder="Enter location of the issue">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required placeholder="Describe the issue..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="image-upload">Upload Image (if applicable):</label>
+                <input type="file" id="image-upload" name="image-upload" accept="image/*">
+            </div>
+
+            <button type="submit" class="btn">Submit Report</button>
+        </form>
+
+        <p><a class="dashy" href="dashboard.html"><button>Back to Dashboard</button></a></p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Community Information and Action App. All rights reserved.</p>
+    </footer>
+</body>
+</html>

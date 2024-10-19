@@ -5,20 +5,27 @@ import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase
 // Function to register the user with email and password
 const registerUser = (email, password, fullname, username) => {
   createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then(async (userCredential) => {
       const user = userCredential.user;
       console.log('User registered:', user);
 
       // Save additional user information to Firestore
-      return setDoc(doc(db, "users", user.uid), {
+      await setDoc(doc(db, "users", user.uid), {
         fullname: fullname,
         username: username,
         email: email,
         uid: user.uid
       });
-    })
-    .then(() => {
+
       console.log('User data stored in Firestore');
+
+      // Get the user's ID token
+      const token = await user.getIdToken();
+      console.log('User token:', token); // Log the token or save it to use later
+
+      // Store the token in local storage or wherever needed
+      localStorage.setItem('userToken', token); // Example of storing token in local storage
+
       window.location.href = "dashboard.html";  // Redirect to dashboard
     })
     .catch((error) => {

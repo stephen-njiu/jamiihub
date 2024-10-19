@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Community Information and Action App</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+    <button id="sidebar-toggle" class="btn toggle-btn bg-blue-600 text-white p-2 rounded-lg shadow-md hover:bg-blue-700 transition duration-200" aria-label="Toggle Menu">☰</button>
+    <div class="dashboard-container flex">
+        <div class="sidebar w-64 bg-white shadow-lg" id="sidebar">
+            <div class="sidebar-header p-4 bg-blue-600 text-white">
+                <h2 class="text-xl font-semibold">Quick Links</h2>
+            </div>
+            <nav class="dashboard-nav">
+                <ul class="space-y-2">
+                    <li><a href="/html/issue-reporting.html" class="highlight text-blue-600 hover:bg-blue-100 p-2 rounded-lg">Report an Issue</a></li>
+                    <li><a href="/html/emergency.html" class="highlight text-blue-600 hover:bg-blue-100 p-2 rounded-lg">Emergency Services</a></li>
+                    <li><a href="/html/edit-profile.html" class="hover:bg-blue-100 p-2 rounded-lg">Edit Profile</a></li>
+                    <li><a href="/html/service-request.html" class="hover:bg-blue-100 p-2 rounded-lg">Service Requests</a></li>
+                    <li><a href="/html/forums.html" class="hover:bg-blue-100 p-2 rounded-lg">Community Forums</a></li>
+                    <li><a href="/html/resources-directory.html" class="hover:bg-blue-100 p-2 rounded-lg">Resources Directory</a></li>
+                    <li><a href="/html/event-calendar.html" class="hover:bg-blue-100 p-2 rounded-lg">Community Events</a></li>
+                    <li><a href="/html/help-faq.html" class="hover:bg-blue-100 p-2 rounded-lg">Help & FAQ</a></li>
+                </ul>
+            </nav>
+            <button id="logout-button" class="btn logout-btn bg-red-600 text-white w-full mt-4 p-2 rounded-lg hover:bg-red-700 transition duration-200">Logout</button>
+        </div>
+
+        <main class="main-content flex-1 p-6">
+            <header class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold">Welcome, <span id="user-name" class="text-blue-600">User</span>!</h1>
+                <input type="text" id="search" placeholder="Search..." class="search-bar border rounded-lg px-3 py-2">
+            </header>
+
+            <section class="gamification my-6 bg-white p-4 rounded-lg shadow-lg">
+                <h2 class="text-xl font-semibold">Your Gamification Status</h2>
+                <div class="points flex justify-between items-center">
+                    <p>Points: <span id="user-points">0</span></p>
+                    <button onclick="earnPoints()" class="btn bg-green-600 text-white p-2 rounded-lg hover:bg-green-700 transition duration-200">Complete a Task</button>
+                </div>
+                <div class="badges">
+                    <h3 class="font-medium">Badges Earned:</h3>
+                    <ul id="badge-list">
+                        <li>No badges yet!</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="notifications my-6 bg-white p-4 rounded-lg shadow-lg">
+                <h2 class="text-xl font-semibold">Recent Notifications</h2>
+                <p id="notification-message">No new notifications.</p>
+            </section>
+
+            <section class="upcoming-events my-6 bg-white p-4 rounded-lg shadow-lg">
+                <h2 class="text-xl font-semibold">Upcoming Events</h2>
+                <div class="event-card my-2 p-3 border rounded-lg shadow">
+                    <h3>Event Title</h3>
+                    <p>Date: <span>MM/DD/YYYY</span></p>
+                    <p>Location: <span>Event Location</span></p>
+                </div>
+                <!-- Add more event cards as needed -->
+            </section>
+
+            <section class="report-issue my-6 bg-white p-4 rounded-lg shadow-lg">
+                <h2 class="text-xl font-semibold">Report an Issue</h2>
+                <button class="btn bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition duration-200">Report Issue</button>
+            </section>
+
+            <footer class="mt-8">
+                <p class="text-center">&copy; 2024 Community Information and Action App. All rights reserved.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script type="module">
+        // Firebase setup
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBY-MNDLfjzuN41Wg56NYDPwNxwgnopJ9s",
+            authDomain: "originhackathon-comm.firebaseapp.com",
+            projectId: "originhackathon-comm",
+            storageBucket: "originhackathon-comm.appspot.com",
+            messagingSenderId: "707961341565",
+            appId: "1:707961341565:web:45f6e221d9ea2750b7d314"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const sidebar = document.getElementById('sidebar');
+        const toggleButton = document.getElementById('sidebar-toggle');
+        
+        toggleButton.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            toggleButton.textContent = sidebar.classList.contains('active') ? '×' : '☰';
+            toggleButton.setAttribute('aria-expanded', sidebar.classList.contains('active'));
+        });
+
+        const username = localStorage.getItem("username");
+        document.getElementById('user-name').textContent = username || 'User';
+
+        const logoutButton = document.getElementById('logout-button');
+        logoutButton.addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                console.log("User logged out successfully.");
+                localStorage.removeItem("userToken");
+                localStorage.removeItem("username");
+                window.location.href = "login.html"; // Redirect to login page
+            } catch (error) {
+                console.error("Error logging out: ", error.message);
+            }
+        });
+    </script>
+    <script type="module" src="/backend/hooks.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Requests - Community Information and Action App</title>
+    <link rel="stylesheet" href="/css/service-request.css">
+</head>
+
+<body>
+    <header>
+        <div class="title">
+            <button id="back-button" class="btn-back">&larr;</button>
+            <h1>Services</h1>
+        </div>
+        <button class="btnmodal" id="post-service-btn">Post a Service</button>
+    </header>
+
+    <main>
+        <div class="modal" id="post-service-modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" id="close-modal">&times;</span>
+                <h2>Post a Service</h2>
+                <form id="service-form" action="/api/services" method="post" enctype="multipart/form-data">
+                    <label for="serviceTitle">Service Title:</label>
+                    <input type="text" id="serviceTitle" name="serviceTitle" required>
+
+                    <label for="serviceDescription">Description:</label>
+                    <textarea id="serviceDescription" name="serviceDescription" required></textarea>
+
+                    <label for="serviceCategory">Category:</label>
+                    <select id="serviceCategory" name="serviceCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="repairs">Repairs</option>
+                        <option value="transport">Transport</option>
+                        <option value="tutoring">Tutoring</option>
+                        <option value="cleaning">Cleaning</option>
+                    </select>
+
+                    <label for="servicePrice">Price:</label>
+                    <input type="number" id="servicePrice" name="servicePrice" required>
+
+                    <label for="serviceLocation">Location:</label>
+                    <input type="text" id="serviceLocation" name="serviceLocation" required>
+
+                    <label for="serviceImage">Service Image:</label>
+                    <input type="file" id="serviceImage" name="serviceImage" required>
+
+                    <button type="submit" class="btnmodal">Post Service</button>
+                </form>
+            </div>
+        </div>
+
+        <section class="section1">
+            <section class="service-categories">
+                <button class="btn category-btn" data-category="" onclick="filterByCategory('')">All</button>
+                <button class="btn category-btn" data-category="repairs" onclick="filterByCategory('repairs')">Repairs</button>
+                <button class="btn category-btn" data-category="transport" onclick="filterByCategory('transport')">Transport</button>
+                <button class="btn category-btn" data-category="tutoring" onclick="filterByCategory('tutoring')">Tutoring</button>
+                <button class="btn category-btn" data-category="cleaning" onclick="filterByCategory('cleaning')">Cleaning</button>
+            </section>
+
+            <div class="service-list">
+                <h2>Available Services</h2>
+                <ul id="services">
+                    <!-- Service items will be dynamically inserted here -->
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/service-requests.js"></script>
+    <script>
+        document.getElementById('post-service-btn').addEventListener('click', () => {
+            document.getElementById('post-service-modal').style.display = 'block';
+        });
+
+        document.getElementById('close-modal').addEventListener('click', () => {
+            document.getElementById('post-service-modal').style.display = 'none';
+        });
+
+        document.getElementById('service-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const token = localStorage.getItem("userToken"); // Retrieve token from local storage
+            const username = localStorage.getItem("username"); // Retrieve username from local storage
+            console.log("username", username)
+
+            // Add username to formData
+            if (username) {
+                formData.append('username', username);
+            } else {
+                alert('Username not found. Please log in again.');
+                return; // Stop submission if username is not found
+            }
+
+            const response = await fetch('http://localhost:5000/api/services', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}` // Add your token for authentication
+                },
+                body: formData,
+            });
+
+            if (response.ok) { // Check for a successful response
+                const result = await response.json();
+                if (result.success) {
+                    alert('Service posted successfully!');
+                    document.getElementById('post-service-modal').style.display = 'none'; // Close the modal
+                    document.getElementById('service-form').reset(); // Reset the form
+                } else {
+                    alert('Error posting service: ' + result.message);
+                }
+            } else {
+                alert('Error: ' + response.statusText);
+            }
+        });
+    </script>
+</body>
+
+</html>

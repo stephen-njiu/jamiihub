@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Community Information and Action App</title>
+    <link rel="stylesheet" href="admin-dashboard.css">
+    <script defer src="admin-dashboard.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
+</head>
+<body>
+    <div class="admin-dashboard-container">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <div class="admin-header">
+                <input type="text" id="search" placeholder="Search..." class="search-bar">
+                <div class="admin-profile">
+                    <img src="profile-pic.jpg" alt="Admin Profile Picture" class="profile-pic"> <!-- Replace with actual image -->
+                    <span>[Admin Name]</span> <!-- Replace with actual admin name -->
+                </div>
+            </div>
+        </header>
+
+        <nav class="admin-nav">
+            <ul>
+                <li><a href="user-management.html">User Management</a></li>
+                <li><a href="service-requests.html">Service Requests</a></li>
+                <li><a href="issue-reports.html">Issue Reports</a></li>
+                <li><a href="event-management.html">Event Management</a></li>
+                <li><a href="notifications.html">Notifications</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+
+        <section class="stats">
+            <h2>Overview</h2>
+            <div class="stat-cards">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Total Users</h3>
+                    <p>[Number]</p> <!-- Replace with dynamic data -->
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Total Service Requests</h3>
+                    <p>[Number]</p> <!-- Replace with dynamic data -->
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>Total Issues Reported</h3>
+                    <p>[Number]</p> <!-- Replace with dynamic data -->
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Total Events</h3>
+                    <p>[Number]</p> <!-- Replace with dynamic data -->
+                </div>
+            </div>
+        </section>
+
+        <section class="recent-activity">
+            <h2>Recent Activity</h2>
+            <!-- Example activity list -->
+            <ul>
+                <li>[User Name] submitted a service request on [Date].</li> 
+                <!-- Add more activity items dynamically -->
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Community Information and Action App. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Optional JavaScript for functionality -->
+    <script src="scripts.js"></script>
+</body>
+</html>

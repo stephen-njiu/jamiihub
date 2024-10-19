@@ -17,6 +17,7 @@ const displayUserName = async () => {
                 const userData = userDoc.data();
                 const displayName = userData.fullname || user.email; // Use the fullname from Firestore
                 userNameSpan.textContent = displayName; // Update the span with the user's name
+                localStorage.setItem("username", displayName)
             } else {
                 console.error("No such user document!");
                 userNameSpan.textContent = 'Guest';
@@ -35,6 +36,7 @@ displayUserName();
 const logout = async () => {
     try {
         await signOut(auth);
+        localStorage.removeItem("userToken")
         console.log("User logged out successfully.");
         window.location.href = "login.html"; 
     } catch (error) {

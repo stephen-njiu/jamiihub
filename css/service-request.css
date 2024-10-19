@@ -1,0 +1,280 @@
+:root {
+    --primary-color: #3a86ff;
+    --secondary-color: #8338ec;
+    --background-color: #f8f9fa;
+    --text-color: #333;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btnmodal {
+    background-color: var(--primary-color);
+    outline: none;
+    border: none;
+    width: 200px;
+    padding: 5px 10px;
+    height: 35px;
+    border-radius: 30px;
+    color: #f1f1f1;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-back {
+    outline: none;
+    border: none;
+    font: 700;
+    color: #3a86ff;
+    font-size: x-large ;
+    background: none;
+    cursor: pointer;
+}
+
+section {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: var(--box-shadow);
+}
+
+.service-categories {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.category-btn {
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.category-btn:hover {
+    background-color: var(--primary-color);
+    color: #f1f1f1;
+}
+
+.service-list {
+    padding: 0;
+}
+
+.service-list h2 {
+    margin-top: 10px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+#services {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Service card styling */
+.service-card {
+    background-color: white;
+    width: 400px;
+    height: 500px;
+    overflow-y: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.service-image {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.service-details {
+    padding: 15px;
+}
+
+.service-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.service-provider {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.service-description {
+    margin: 10px 0;
+    color: #666;
+}
+
+.service-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    bottom: 0;
+}
+
+.read-more-link {
+    color: #3a86ff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.rating-stars {
+    color: gold;
+    font-size: 1rem;
+}
+
+.rating-text {
+    color: black;
+    font-size: 1rem;
+}
+
+.btn-small {
+    background-color: var(--primary-color);
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    width: 100px;
+    height: 35px;
+    border-radius: 30px;
+    color: #f1f1f1;
+    font-size: 0.8rem;
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker background for better contrast */
+    overflow-y: auto;
+}
+
+/* Modal content */
+.modal-content {
+    background-color: white;
+    margin: 5% auto; /* Reduced margin for better centering */
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: var(--box-shadow);
+    position: relative; /* Added position for the close button */
+}
+
+/* Close button */
+.close {
+    color: var(--primary-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Close button hover effect */
+.close:hover,
+.close:focus {
+    color: #ff0000; /* Change color on hover for better visibility */
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+}
+
+/* Input fields */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="file"],
+select,
+textarea {
+    padding: 10px;
+    border: 1px solid #ddd; /* Light border */
+    border-radius: var(--border-radius);
+    margin-bottom: 15px; /* Spacing between fields */
+    font-size: 1rem;
+    width: 95%; /* Full width of the modal */
+}
+
+/* Textarea specific styles */
+textarea {
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+/* Label styling */
+label {
+    margin-bottom: 5px; /* Spacing above labels */
+    font-weight: bold; /* Make labels bold for emphasis */
+    color: var(--text-color); /* Color from the root variable */
+}
+
+/* Button styling */
+.btnmodal {
+    background-color: var(--primary-color);
+    outline: none;
+    border: none;
+    padding: 10px; /* Increased padding for a better button size */
+    border-radius: var(--border-radius);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnmodal:hover {
+    background-color: var(--secondary-color); /* Change color on hover */
+}
+
+/* Optional: Add a footer for modal actions */
+.modal-footer {
+    display: flex;
+    justify-content: space-between; /* Space between buttons */
+    margin-top: 20px; /* Spacing above footer */
+}
