@@ -1,0 +1,53 @@
+/* Existing styles... */
+
+/* Gamification section styles */
+.gamification {
+    margin-top: 20px;
+    background-color: #3C3C3C; /* Gamification background */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.gamification h2 {
+    font-size: 20px;
+    color: #00FF00; /* NVIDIA green */
+}
+
+.gamification .points {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gamification button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00FF00; /* Button color */
+    color: #1E1E1E; /* Text color */
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.gamification button:hover {
+    background-color: #1EDC00; /* Button hover effect */
+}
+
+.badges {
+    margin-top: 15px;
+}
+
+.badges h3 {
+    margin-bottom: 10px;
+    color: #00FF00; /* NVIDIA green */
+}
+
+.badges ul {
+    list-style: none;
+    padding: 0;
+}
+
+.badges li {
+    margin: 5px 0;
+    color: #FFFFFF; /* Badge text color */
+}

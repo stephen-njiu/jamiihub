@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Requests - Community Information and Action App</title>
+    <link rel="stylesheet" href="service-requests.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
+</head>
+<body>
+    <div class="admin-dashboard-container">
+        <header>
+            <h1>Service Requests</h1>
+            <div class="admin-header">
+                <input type="text" id="search-requests" placeholder="Search requests..." class="search-bar">
+                <div class="admin-profile">
+                    <img src="profile-pic.jpg" alt="Admin Profile Picture" class="profile-pic"> <!-- Replace with actual image -->
+                    <span>[Admin Name]</span> <!-- Replace with actual admin name -->
+                </div>
+            </div>
+        </header>
+
+        <section class="request-list-section">
+            <h2>Service Requests</h2>
+            <table class="request-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Service</th>
+                        <th>Request Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="request-list">
+                    <!-- Request rows will be dynamically populated here -->
+                </tbody>
+            </table>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Community Information and Action App. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for functionality -->
+    <script src="service-requests.js"></script>
+</body>
+</html>

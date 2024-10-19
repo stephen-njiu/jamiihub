@@ -1,0 +1,51 @@
+/* General Styles for the Emergency Services Page */
+.emergency-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2em;
+    color: #007BFF;
+}
+
+.contacts,
+.procedures {
+    margin-top: 20px;
+}
+
+.contacts ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.contacts li {
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #28A745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+}

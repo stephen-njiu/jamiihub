@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Community Information and Action App</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Welcome, [User's Name]!</h1>
+            <input type="text" id="search" placeholder="Search..." class="search-bar">
+        </header>
+
+        <nav class="dashboard-nav">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="edit-profile.html">Edit Profile</a></li>
+                <li><a href="service-request.html">Service Requests</a></li>
+                <li><a href="issue-reporting.html">Report an Issue</a></li>
+                <li><a href="forums.html">Community Forums</a></li>
+                <li><a href="emergency.html">Emergency Services</a></li>
+                <li><a href="resources-directory.html">Resources Directory</a></li>
+                <li><a href="event-calendar.html">Community Events</a></li>
+                <li><a href="help-faq.html">Help & FAQ</a></li>
+            </ul>
+        </nav>
+
+        <section class="gamification">
+            <h2>Your Gamification Status</h2>
+            <div class="points">
+                <p>Points: <span id="user-points">0</span></p>
+                <button onclick="earnPoints()">Complete a Task</button>
+            </div>
+            <div class="badges">
+                <h3>Badges Earned:</h3>
+                <ul id="badge-list">
+                    <li>No badges yet!</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="notifications">
+            <h2>Recent Notifications</h2>
+            <p>No new notifications.</p> <!-- This can be dynamic -->
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Community Information and Action App. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Optional JavaScript for functionality -->
+    <script src="scripts.js"></script>
+</body>
+</html>

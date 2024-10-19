@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Management - Community Information and Action App</title>
+    <link rel="stylesheet" href="feedback.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="admin-dashboard-container">
+        <header>
+            <h1>Feedback Management</h1>
+            <div class="admin-header">
+                <input type="text" id="search-feedback" placeholder="Search feedback..." class="search-bar">
+                <div class="admin-profile">
+                    <img src="profile-pic.jpg" alt="Admin Profile Picture" class="profile-pic">
+                    <span>[Admin Name]</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="feedback-list-section">
+            <h2>Received Feedback</h2>
+            <table class="feedback-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User</th>
+                        <th>Feedback</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="feedback-list">
+                    <!-- Feedback rows will be dynamically populated here -->
+                </tbody>
+            </table>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Community Information and Action App. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="feedback.js"></script>
+</body>
+</html>
