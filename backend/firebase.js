@@ -15,11 +15,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-console.log('Firebase initialized:', app); // Log to confirm initialization
 
 // Initialize Firebase services
 export const auth = getAuth(app);  // Firebase Authentication
 export const db = getFirestore(app);  // Firestore Database
-
-console.log('Auth initialized:', auth); // Log to confirm auth initialization
-console.log('Firestore initialized:', db); // Log to confirm Firestore initialization

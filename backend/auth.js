@@ -27,64 +27,44 @@ const registerUser = (email, password, fullname, username) => {
     });
 };
 
-// Listen to form submission for registration
-document.getElementById('registration-form').addEventListener('submit', (e) => {
-  e.preventDefault();  // Prevent form submission
+document.addEventListener('DOMContentLoaded', () => {  
+  // Listen to form submission for registration
+  document.getElementById('registration-form').addEventListener('submit', (e) => {
+      e.preventDefault();  // Prevent form submission
 
-  // Get form values
-  const fullname = document.getElementById('fullname').value;
-  const email = document.getElementById('email').value;
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+      // Get form values
+      const fullname = document.getElementById('fullname').value;
+      const email = document.getElementById('email').value;
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
 
-  // Call the register function
-  registerUser(email, password, fullname, username);
+      // Call the register function
+      registerUser(email, password, fullname, username);
+  });
+
+  // Google sign-in
+  document.getElementById('google-signup').addEventListener('click', async () => {
+      const provider = new GoogleAuthProvider();
+      try {
+          const result = await signInWithPopup(auth, provider);
+          const user = result.user;
+          console.log("Google signup successful!", user);
+          
+          // Save user data to Firestore
+          await setDoc(doc(db, "users", user.uid), {
+              fullname: user.displayName,
+              email: user.email,
+              username: user.email.split('@')[0],
+              uid: user.uid
+          }, { merge: true });
+
+          // Redirect to the dashboard upon successful signup
+          window.location.href = 'dashboard.html';
+      } catch (error) {
+          console.error("Error signing up with Google: ", error);
+          alert("Google signup failed.");
+      }
+  });
 });
 
-// Listen to form submission for login
-document.getElementById('login-form').addEventListener('submit', (e) => {
-  e.preventDefault();  // Prevent form from submitting normally
-
-  // Get form values
-  const email = document.getElementById('email').value; // Ensure this matches your HTML
-  const password = document.getElementById('password').value;
-
-  // Firebase sign-in
-  signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-          const user = userCredential.user;
-          console.log('User signed in:', user);
-          window.location.href = 'dashboard.html'; // Check if this is reached
-      })
-      .catch((error) => {
-          const errorMessage = error.message;
-          console.error('Error signing in:', errorMessage);
-          alert(errorMessage);
-      });
-});
-
-// Google sign-in
-document.getElementById('google-signup').addEventListener('click', async () => {
-  const provider = new GoogleAuthProvider();
-
-  try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      console.log("Google signup successful!", user);
-      
-      // Save user data to Firestore
-      await setDoc(doc(db, "users", user.uid), {
-          fullname: user.displayName,
-          email: user.email,
-          username: user.email.split('@')[0], // You can modify this to use a different username strategy
-          uid: user.uid
-      }, { merge: true });  // Use merge to update existing records
-
-      // Redirect to the dashboard upon successful signup
-      window.location.href = 'dashboard.html';
-  } catch (error) {
-      console.error("Error signing up with Google: ", error);
-      alert("Google signup failed.");
-  }
-});
 

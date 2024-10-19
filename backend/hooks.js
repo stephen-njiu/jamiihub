@@ -1,16 +1,26 @@
-import { auth } from './firebase.js';
+import { auth, db } from './firebase.js';  // Make sure to import db
 import { signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js"; 
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js"; // Import Firestore functions
 
 // Function to display the user's name on the dashboard
-const displayUserName = () => {
+const displayUserName = async () => {
     const userNameSpan = document.getElementById('user-name');
 
     // Get the currently logged-in user
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged(async user => {
         if (user) {
-            // User is signed in, get their display name or username
-            const displayName = user.displayName || user.email; 
-            userNameSpan.textContent = displayName; // Update the span with the user's name
+            // User is signed in, get their Firestore document
+            const userRef = doc(db, "users", user.uid); // Ensure 'db' is imported
+            const userDoc = await getDoc(userRef);
+
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+                const displayName = userData.fullname || user.email; // Use the fullname from Firestore
+                userNameSpan.textContent = displayName; // Update the span with the user's name
+            } else {
+                console.error("No such user document!");
+                userNameSpan.textContent = 'Guest';
+            }
         } else {
             // No user is signed in, you can redirect to login or show a message
             userNameSpan.textContent = 'Guest';
