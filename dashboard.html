@@ -9,8 +9,9 @@
 <body>
     <div class="dashboard-container">
         <header>
-            <h1>Welcome, [User's Name]!</h1>
+            <h1>Welcome, <span id="user-name">User</span>!</h1>
             <input type="text" id="search" placeholder="Search..." class="search-bar">
+            <button id="logout-button" class="btn">Logout</button> 
         </header>
 
         <nav class="dashboard-nav">
@@ -53,5 +54,7 @@
 
     <!-- Optional JavaScript for functionality -->
     <script src="scripts.js"></script>
+    <script type="module" src="./backend/hooks.js"></script>
+    <script type="module" src="./backend/auth.js"></script>
 </body>
 </html>

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Community Information and Action App</title>
     <link rel="stylesheet" href="login.css">
 </head>
+
 <body>
     <div class="login-container">
         <header>
@@ -24,18 +26,20 @@
             </div>
 
             <button type="submit" class="btn">Login</button>
-        
 
             <p class="forgot-password"><a href="#">Forgot your password?</a></p>
 
             <p>Don't have an account? <a href="register.html">Register here</a></p>
         </form>
+        <button type="button" id="google-login" class="btn">Login with Google</button>
     </div>
-    <a href="profile.html"><button type="submit" class="buton">Login</button></a>
-
 
     <footer>
         <p>&copy; 2024 Community Information and Action App. All rights reserved.</p>
     </footer>
+    <!-- Link to Firebase and auth scripts -->
+    <script type="module" src="./backend/firebase.js"></script>
+    <script type="module" src="./backend/auth.js"></script>
 </body>
+
 </html>
