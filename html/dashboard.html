@@ -55,13 +55,14 @@
                     <!-- Event cards will be dynamically generated here -->
                 </div>
             </section>
-        
+
             <section class="news my-6 bg-white p-4 rounded-lg shadow-lg">
                 <h2 class="text-xl font-semibold">Trending News</h2>
-                <div class="news-list" id="news-list">
+                <div class="news-list flex flex-wrap items-center gap-4" id="news-list">
                     <!-- News items will be dynamically generated here -->
                 </div>
             </section>
+
 
             <section class="report-issue my-6 bg-white p-4 rounded-lg shadow-lg">
                 <h2 class="text-xl font-semibold">Report an Issue</h2>
@@ -118,7 +119,7 @@
             }
         });
     </script>
-     <script>
+    <script>
         async function fetchEvents() {
             const eventCardsContainer = document.getElementById('event-cards');
             try {
@@ -148,26 +149,37 @@
 
         async function fetchNews() {
             const newsList = document.getElementById('news-list');
+            newsList.innerHTML = ''; // Clear previous news items
             try {
-                const response = await fetch('https://newsapi.org/v2/top-headlines?country=ke&apiKey=YOUR_API_KEY'); // Replace with your News API key
+                const response = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=9581fe88b70d404daa25d13f9ee2391c'); // Replace with your News API key
+                if (!response.ok) throw new Error('Network response was not ok');
                 const newsData = await response.json();
                 const articles = newsData.articles;
 
-                articles.forEach(article => {
+                if (articles.length === 0) {
+                    newsList.innerHTML = '<p>No trending news available at the moment.</p>';
+                    return;
+                }
+
+                articles.slice(0,6).forEach(article => {
                     const newsItem = document.createElement('div');
-                    newsItem.className = 'news-item';
+                    newsItem.className = 'news-item p-4 border rounded-lg shadow-md max-w-[400px] w-full overflow-hidden'; // Max width set to 400px
                     newsItem.innerHTML = `
-                        <h3 class="news-title">${article.title}</h3>
-                        <p class="news-description">${article.description || 'No description available.'}</p>
-                    `;
+                
+                <h3 class="news-title text-lg font-semibold">${article.title}</h3>
+                <p class="news-description text-gray-700">${article.description || 'No description available.'}</p>
+                <a href="${article.url}" target="_blank" class="text-blue-600 hover:underline">Read more</a>
+            `;
                     newsList.appendChild(newsItem);
                 });
             } catch (error) {
                 console.error("Error fetching news: ", error);
+                newsList.innerHTML = '<p>Error fetching news. Please try again later.</p>'; // Handle errors gracefully
             }
         }
 
-        // Call the functions to fetch events and news
+
+        //Call the functions to fetch events and news
         fetchEvents();
         fetchNews();
     </script>
