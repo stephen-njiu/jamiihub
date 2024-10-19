@@ -51,12 +51,16 @@
 
             <section class="upcoming-events my-6 bg-white p-4 rounded-lg shadow-lg">
                 <h2 class="text-xl font-semibold">Upcoming Events</h2>
-                <div class="event-card my-2 p-3 border rounded-lg shadow">
-                    <h3>Event Title</h3>
-                    <p>Date: <span>MM/DD/YYYY</span></p>
-                    <p>Location: <span>Event Location</span></p>
+                <div class="event-cards" id="event-cards">
+                    <!-- Event cards will be dynamically generated here -->
                 </div>
-                <!-- Add more event cards as needed -->
+            </section>
+        
+            <section class="news my-6 bg-white p-4 rounded-lg shadow-lg">
+                <h2 class="text-xl font-semibold">Trending News</h2>
+                <div class="news-list" id="news-list">
+                    <!-- News items will be dynamically generated here -->
+                </div>
             </section>
 
             <section class="report-issue my-6 bg-white p-4 rounded-lg shadow-lg">
@@ -114,6 +118,60 @@
             }
         });
     </script>
+     <script>
+        async function fetchEvents() {
+            const eventCardsContainer = document.getElementById('event-cards');
+            try {
+                const response = await fetch('https://api.eventful.com/json/events/search?...'); // Replace with real API endpoint
+                const data = await response.json();
+                const events = data.events.event; // Adjust based on the actual API response structure
+
+                events.forEach(event => {
+                    const eventCard = document.createElement('div');
+                    eventCard.className = 'event-card';
+                    eventCard.innerHTML = `
+                        <img src="${event.image || 'placeholder.jpg'}" alt="${event.title}" class="event-poster">
+                        <div class="event-info">
+                            <h3 class="event-title">${event.title}</h3>
+                            <p class="event-date">Date: ${event.start_time}</p>
+                            <p class="event-venue">Venue: ${event.venue.name}</p>
+                            <p class="event-status">Status: ${event.price || 'Free'}</p>
+                            <div class="event-description hidden">${event.description || 'No description available.'}</div>
+                        </div>
+                    `;
+                    eventCardsContainer.appendChild(eventCard);
+                });
+            } catch (error) {
+                console.error("Error fetching events: ", error);
+            }
+        }
+
+        async function fetchNews() {
+            const newsList = document.getElementById('news-list');
+            try {
+                const response = await fetch('https://newsapi.org/v2/top-headlines?country=ke&apiKey=YOUR_API_KEY'); // Replace with your News API key
+                const newsData = await response.json();
+                const articles = newsData.articles;
+
+                articles.forEach(article => {
+                    const newsItem = document.createElement('div');
+                    newsItem.className = 'news-item';
+                    newsItem.innerHTML = `
+                        <h3 class="news-title">${article.title}</h3>
+                        <p class="news-description">${article.description || 'No description available.'}</p>
+                    `;
+                    newsList.appendChild(newsItem);
+                });
+            } catch (error) {
+                console.error("Error fetching news: ", error);
+            }
+        }
+
+        // Call the functions to fetch events and news
+        fetchEvents();
+        fetchNews();
+    </script>
+
     <script type="module" src="/backend/hooks.js"></script>
 </body>
 

@@ -58,6 +58,79 @@
     list-style-type: none;
     padding: 0;
   }
+
+  .event-cards {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px; /* Spacing between cards */
+}
+
+.event-card {
+    position: relative;
+    width: 400px; /* Card width */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.event-card:hover {
+    transform: scale(1.05); /* Slight scale on hover */
+}
+
+.event-poster {
+    width: 100%;
+    height: auto;
+}
+
+.event-info {
+    padding: 16px;
+    background-color: white;
+}
+
+.event-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.event-status {
+    font-weight: 600;
+}
+
+.event-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    opacity: 0; /* Hide by default */
+    transition: opacity 0.3s;
+}
+
+.event-card:hover .event-description {
+    opacity: 1; /* Show on hover */
+}
+
+.news-item {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+}
+
+.news-title {
+    font-weight: bold;
+}
+
+.news-description {
+    color: #666;
+}
   
   .dashboard-nav li {
     margin-bottom: 15px;
