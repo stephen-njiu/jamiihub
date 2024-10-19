@@ -1,8 +1,6 @@
 import { auth, db } from "./firebase.js"; 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
-import { signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js"; 
-
 
 // Function to register the user with email and password
 const registerUser = (email, password, fullname, username) => {
@@ -45,25 +43,24 @@ document.getElementById('registration-form').addEventListener('submit', (e) => {
 
 // Listen to form submission for login
 document.getElementById('login-form').addEventListener('submit', (e) => {
-    e.preventDefault();  // Prevent form from submitting normally
+  e.preventDefault();  // Prevent form from submitting normally
 
-    // Get form values
-    const email = document.getElementById('username').value;  // Assuming username is an email
-    const password = document.getElementById('password').value;
+  // Get form values
+  const email = document.getElementById('email').value; // Ensure this matches your HTML
+  const password = document.getElementById('password').value;
 
-    // Firebase sign-in
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // User is signed in
-            const user = userCredential.user;
-            console.log('User signed in:', user);
-            window.location.href = 'dashboard.html';
-        })
-        .catch((error) => {
-            const errorMessage = error.message;
-            console.error('Error signing in:', errorMessage);
-            alert(errorMessage);
-        });
+  // Firebase sign-in
+  signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+          const user = userCredential.user;
+          console.log('User signed in:', user);
+          window.location.href = 'dashboard.html'; // Check if this is reached
+      })
+      .catch((error) => {
+          const errorMessage = error.message;
+          console.error('Error signing in:', errorMessage);
+          alert(errorMessage);
+      });
 });
 
 // Google sign-in
@@ -91,17 +88,3 @@ document.getElementById('google-signup').addEventListener('click', async () => {
   }
 });
 
-// Function to handle logout
-const logout = async () => {
-  try {
-      await signOut(auth);
-      console.log("User logged out successfully.");
-      window.location.href = "login.html";
-  } catch (error) {
-      console.error("Error logging out: ", error.message);
-      alert("Error logging out. Please try again.");
-  }
-};
-
-// Add event listener for logout button
-document.getElementById("logout-button").addEventListener("click", logout);

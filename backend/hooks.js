@@ -1,4 +1,5 @@
 import { auth } from './firebase.js';
+import { signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js"; 
 
 // Function to display the user's name on the dashboard
 const displayUserName = () => {
@@ -19,3 +20,20 @@ const displayUserName = () => {
 
 // Call the function when the script loads
 displayUserName();
+
+// Function to handle logout
+const logout = async () => {
+    try {
+        await signOut(auth);
+        console.log("User logged out successfully.");
+        window.location.href = "login.html"; 
+    } catch (error) {
+        console.error("Error logging out: ", error.message);
+        alert("Error logging out. Please try again.");
+    }
+};
+
+document.getElementById("logout-button").addEventListener("click", () => {
+    console.log("Logout button clicked."); // Check if this gets logged
+    logout();
+});
