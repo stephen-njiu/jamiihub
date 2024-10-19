@@ -6,31 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Requests - Community Information and Action App</title>
     <link rel="stylesheet" href="/css/service-request.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <header>
-        <div class="title">
-            <button id="back-button" class="btn-back">&larr;</button>
-            <h1>Services</h1>
+<body class="bg-gray-100 font-sans">
+    <header class="bg-white shadow p-4 flex justify-between items-center">
+        <div class="title flex items-center">
+            <button id="back-button" class="btn-back text-gray-600 hover:text-blue-500 mr-2">
+                &larr;
+            </button>
+            <h1 class="text-xl font-bold">Services</h1>
         </div>
-        <button class="btnmodal" id="post-service-btn">Post a Service</button>
+        <button class="btnmodal bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" id="post-service-btn">Post a Service</button>
     </header>
 
-    <main>
-        <div class="modal" id="post-service-modal" style="display:none;">
-            <div class="modal-content">
-                <span class="close" id="close-modal">&times;</span>
-                <h2>Post a Service</h2>
+    <main class="p-4">
+        <div class="modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50" id="post-service-modal" style="display:none;">
+            <div class="modal-content bg-white rounded shadow-lg w-full max-w-md p-6 relative">
+                <span class="close absolute top-2 right-2 cursor-pointer text-gray-600" id="close-modal">&times;</span>
+                <h2 class="text-lg font-semibold mb-4">Post a Service</h2>
                 <form id="service-form" action="/api/services" method="post" enctype="multipart/form-data">
-                    <label for="serviceTitle">Service Title:</label>
-                    <input type="text" id="serviceTitle" name="serviceTitle" required>
+                    <label class="block text-gray-700" for="serviceTitle">Service Title:</label>
+                    <input class="w-full border border-gray-300 p-2 rounded mb-4" type="text" id="serviceTitle" name="serviceTitle" required>
 
-                    <label for="serviceDescription">Description:</label>
-                    <textarea id="serviceDescription" name="serviceDescription" required></textarea>
+                    <label class="block text-gray-700" for="serviceDescription">Description:</label>
+                    <textarea class="w-full border border-gray-300 p-2 rounded mb-4" id="serviceDescription" name="serviceDescription" required></textarea>
 
-                    <label for="serviceCategory">Category:</label>
-                    <select id="serviceCategory" name="serviceCategory" required>
+                    <label class="block text-gray-700" for="serviceCategory">Category:</label>
+                    <select class="w-full border border-gray-300 p-2 rounded mb-4" id="serviceCategory" name="serviceCategory" required>
                         <option value="">Select a category</option>
                         <option value="repairs">Repairs</option>
                         <option value="transport">Transport</option>
@@ -38,32 +41,32 @@
                         <option value="cleaning">Cleaning</option>
                     </select>
 
-                    <label for="servicePrice">Price:</label>
-                    <input type="number" id="servicePrice" name="servicePrice" required>
+                    <label class="block text-gray-700" for="servicePrice">Price:</label>
+                    <input class="w-full border border-gray-300 p-2 rounded mb-4" type="number" id="servicePrice" name="servicePrice" required>
 
-                    <label for="serviceLocation">Location:</label>
-                    <input type="text" id="serviceLocation" name="serviceLocation" required>
+                    <label class="block text-gray-700" for="serviceLocation">Location:</label>
+                    <input class="w-full border border-gray-300 p-2 rounded mb-4" type="text" id="serviceLocation" name="serviceLocation" required>
 
-                    <label for="serviceImage">Service Image:</label>
-                    <input type="file" id="serviceImage" name="serviceImage" required>
+                    <label class="block text-gray-700" for="serviceImage">Service Image:</label>
+                    <input class="w-full border border-gray-300 p-2 rounded mb-4" type="file" id="serviceImage" name="serviceImage" required>
 
-                    <button type="submit" class="btnmodal">Post Service</button>
+                    <button type="submit" class="btnmodal bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Post Service</button>
                 </form>
             </div>
         </div>
 
-        <section class="section1">
-            <section class="service-categories">
-                <button class="btn category-btn" data-category="" onclick="filterByCategory('')">All</button>
-                <button class="btn category-btn" data-category="repairs" onclick="filterByCategory('repairs')">Repairs</button>
-                <button class="btn category-btn" data-category="transport" onclick="filterByCategory('transport')">Transport</button>
-                <button class="btn category-btn" data-category="tutoring" onclick="filterByCategory('tutoring')">Tutoring</button>
-                <button class="btn category-btn" data-category="cleaning" onclick="filterByCategory('cleaning')">Cleaning</button>
+        <section class="section1 mt-6">
+            <section class="service-categories mb-4 flex flex-wrap gap-2">
+                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-category="" onclick="filterByCategory('')">All</button>
+                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-category="repairs" onclick="filterByCategory('repairs')">Repairs</button>
+                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-category="transport" onclick="filterByCategory('transport')">Transport</button>
+                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-category="tutoring" onclick="filterByCategory('tutoring')">Tutoring</button>
+                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-category="cleaning" onclick="filterByCategory('cleaning')">Cleaning</button>
             </section>
 
             <div class="service-list">
-                <h2>Available Services</h2>
-                <ul id="services">
+                <h2 class="text-xl font-semibold mb-2">Available Services</h2>
+                <ul id="services" class="bg-white rounded shadow p-4 space-y-2">
                     <!-- Service items will be dynamically inserted here -->
                 </ul>
             </div>
@@ -73,7 +76,7 @@
     <script src="/js/service-requests.js"></script>
     <script>
         document.getElementById('post-service-btn').addEventListener('click', () => {
-            document.getElementById('post-service-modal').style.display = 'block';
+            document.getElementById('post-service-modal').style.display = 'flex';
         });
 
         document.getElementById('close-modal').addEventListener('click', () => {
