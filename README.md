@@ -1,4 +1,6 @@
-# Community Information and Action Application (Flask)
+# __JamiiHub - Community Information and Action Application (Flask)__
+
+# __Try it Out: --> https://jamiihub.onrender.com__
 
 This is a Flask-based web application for **Challenge 3: Community Information and Action**.<br> The application allows community members to register, log in, and report issues or request services from local authorities or organizations. The goal is to enhance communication, engagement, and crisis management within communities, aligning with **SDG 11 (Sustainable Cities and Communities)**.
 
