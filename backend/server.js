@@ -17,8 +17,14 @@ admin.initializeApp({
   storageBucket: "gs://originhackathon-comm.appspot.com",
 });
 
+app.get('/maps-api-key', (req, res) => {
+  res.json({ apiKey: process.env.GOOGLE_MAPS_API_KEY });
+});
+
+
 // Multer setup
 const upload = multer({ storage: multer.memoryStorage() }); // Store files in memory
+
 
 app.post("/api/services", upload.single("serviceImage"), async (req, res) => {
   try {
