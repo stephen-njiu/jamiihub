@@ -141,7 +141,7 @@ section {
 .service-card {
     background-color: white;
     width: 400px;
-    height: 500px;
+    height: 530px;
     overflow-y: auto;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
