@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function fetchServices() {
         try {
-            const response = await fetch('http://localhost:5000/api/services'); // Ensure this URL is correct
+            const response = await fetch('http://localhost:5000/api/services'); 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -31,8 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p class="service-location"><strong>Location:</strong> ${service.location}</p>
                     <p class="service-price"><strong>Price:</strong> $${service.price}</p>
                 </div>
-                <div class="service-footer">
-                    <span class="rating-stars">${'★'.repeat(Math.floor(service.rating))} <span class="rating-text">${service.rating}</span></span>
+                <div class="service-footer"> 
                     <a class="read-more-link" data-index="${index}">See More</a>
                     <button class="btn-small">Contact</button>
                 </div>

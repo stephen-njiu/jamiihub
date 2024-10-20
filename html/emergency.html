@@ -148,11 +148,22 @@
     </footer>
 
     <script>
-        const apiKey = 'AIzaSyBDsWLxPjW4vIK73cFKwdjQm7GBZbg6pTI';  // Replace with your actual API key
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initializeMap`;
-        script.async = true;
-        document.body.appendChild(script);
+        async function loadGoogleMaps() {
+            try {
+                // Fetch the API key from your server
+                const response = await fetch('http://localhost:5000/maps-api-key');
+                const data = await response.json();
+                const apiKey = data.apiKey; // Get the API key from the response
+                
+                const script = document.createElement('script');
+                script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initializeMap`;
+                script.async = true;
+                document.body.appendChild(script);
+            } catch (error) {
+                console.error('Error loading Google Maps API key:', error);
+            }
+        }
+    
         function initializeMap() {
             document.getElementById('map-btn').addEventListener('click', () => {
                 if (navigator.geolocation) {
@@ -162,28 +173,28 @@
                 }
             });
         }
-
+    
         let map;
-
+    
         function initMap(position) {
             const userLocation = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-
+    
             map = new google.maps.Map(document.getElementById('map'), {
                 center: userLocation,
                 zoom: 14
             });
-
+    
             const service = new google.maps.places.PlacesService(map);
-
+    
             const request = {
                 location: userLocation,
                 radius: 5000,
                 types: ['police', 'hospital', 'fire_station']
             };
-
+    
             service.nearbySearch(request, function (results, status) {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
                     results.forEach((place) => {
@@ -194,22 +205,22 @@
                 }
             });
         }
-
+    
         function addMarker(place) {
             const marker = new google.maps.Marker({
                 map: map,
                 position: place.geometry.location
             });
-
+    
             const infowindow = new google.maps.InfoWindow({
                 content: `<strong>${place.name}</strong><br>${place.vicinity}`
             });
-
+    
             marker.addListener('click', () => {
                 infowindow.open(map, marker);
             });
         }
-
+    
         function showError(error) {
             const errorMessage = document.getElementById('error-message');
             switch (error.code) {
@@ -227,8 +238,11 @@
                     break;
             }
         }
-
+    
+        // Load the Google Maps API
+        loadGoogleMaps();
     </script>
+    
 
 </body>
 

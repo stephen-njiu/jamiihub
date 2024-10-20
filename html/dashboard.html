@@ -146,6 +146,8 @@
         });
     </script>
     <script>
+        const token = localStorage.getItem("userToken")
+        console.log("token", token)
         async function fetchEvents() {
             const eventCardsContainer = document.getElementById('event-cards');
             try {
