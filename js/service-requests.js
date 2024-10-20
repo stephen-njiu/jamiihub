@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function fetchServices() {
         try {
-            const response = await fetch('http://localhost:5000/api/services'); 
+            const response = await fetch('https://jamiihubserver.onrender.com/api/services'); 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to send the inquiry message to the server
     async function sendInquiry(serviceId, message) {
         try {
-            const response = await fetch(`http://localhost:5000/api/services/${serviceId}/inquiry`, {
+            const response = await fetch(`https://jamiihubserver.onrender.com/api/services/${serviceId}/inquiry`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
