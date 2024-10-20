@@ -43,29 +43,40 @@ customer base.
 Additionally, JamiiHub acts as a platform for local events, where users can explore, promote,
 and purchase tickets to community activities, from social gatherings to government-organized
 events.
-Key Features:
+### Key Features:
 • For Residents: An easy-to-use interface for ordering community services and
 purchasing event tickets.
+
 • For Service Providers: A platform to offer services and receive orders, growing their
 businesses.
+
 • For Event Organizers: A streamlined ticketing system for community events,
 allowing for efficient planning and participation.
+
 JamiiHub fosters stronger connections between citizens, small businesses, and local
 authorities, making service access and community engagement seamless and transparent.
-3: Business Model & Impact
+### 3: Business Model & Impact
 Title: Empowering Communities Through Commissions and Event Ticketing:
+
 JamiiHub operates on a commission-based business model. For every service ordered through
 the platform, we take a small commission, ensuring sustainability while keeping the platform
-accessible. Additionally, JamiiHub monetizes event ticketing by charging a percentage on
+accessible. 
+
+Additionally, JamiiHub monetizes event ticketing by charging a percentage on
 every ticket sold for community events hosted via the platform.
 Revenue Streams:
+
 • Service Commission: A small fee from each service paid for via JamiiHub.
+
 • Event Ticketing Commission: A percentage of each ticket sold through the platform.
 Impact:
+
 • Economic Growth: JamiiHub empowers small businesses by providing them with
 direct access to customers, helping them grow and contribute to the local economy.
+
 • Community Engagement: By offering an event ticketing system, we foster stronger
 community connections and more vibrant local events.
+
 • Improved Public Services: Governments and organizations can easily register to
 provide services or host events, fostering greater transparency and efficiency in public
 service delivery.
