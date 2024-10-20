@@ -270,13 +270,14 @@ footer {
   }
 
   .sidebar {
-    width: 100%;
+    width: 90%;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: auto;
     max-height: 100vh;
+    height: 70vh;
     overflow-y: auto;
     transform: translateY(-100%);
     transition: transform 0.3s ease;

@@ -17,23 +17,28 @@
             </button>
             <h1 class="text-xl font-bold">Services</h1>
         </div>
-        <button class="btnmodal bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" id="post-service-btn">Post a Service</button>
+        <button class="btnmodal bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" id="post-service-btn">Post a
+            Service</button>
     </header>
 
     <main class="p-4">
-        <div class="modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50" id="post-service-modal" style="display:none;">
+        <div class="modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+            id="post-service-modal" style="display:none;">
             <div class="modal-content bg-white rounded shadow-lg w-full max-w-md p-6 relative">
                 <span class="close absolute top-2 right-2 cursor-pointer text-gray-600" id="close-modal">&times;</span>
                 <h2 class="text-lg font-semibold mb-4">Post a Service</h2>
                 <form id="service-form" action="/api/services" method="post" enctype="multipart/form-data">
                     <label class="block text-gray-700" for="serviceTitle">Service Title:</label>
-                    <input class="w-full border border-gray-300 p-2 rounded mb-4" type="text" id="serviceTitle" name="serviceTitle" required>
+                    <input class="w-full border border-gray-300 p-2 rounded mb-4" type="text" id="serviceTitle"
+                        name="serviceTitle" required>
 
                     <label class="block text-gray-700" for="serviceDescription">Description:</label>
-                    <textarea class="w-full border border-gray-300 p-2 rounded mb-4" id="serviceDescription" name="serviceDescription" required></textarea>
+                    <textarea class="w-full border border-gray-300 p-2 rounded mb-4" id="serviceDescription"
+                        name="serviceDescription" required></textarea>
 
                     <label class="block text-gray-700" for="serviceCategory">Category:</label>
-                    <select class="w-full border border-gray-300 p-2 rounded mb-4" id="serviceCategory" name="serviceCategory" required>
+                    <select class="w-full border border-gray-300 p-2 rounded mb-4" id="serviceCategory"
+                        name="serviceCategory" required>
                         <option value="">Select a category</option>
                         <option value="repairs">Repairs</option>
                         <option value="transport">Transport</option>
@@ -42,26 +47,36 @@
                     </select>
 
                     <label class="block text-gray-700" for="servicePrice">Price:</label>
-                    <input class="w-full border border-gray-300 p-2 rounded mb-4" type="number" id="servicePrice" name="servicePrice" required>
+                    <input class="w-full border border-gray-300 p-2 rounded mb-4" type="number" id="servicePrice"
+                        name="servicePrice" required>
 
                     <label class="block text-gray-700" for="serviceLocation">Location:</label>
-                    <input class="w-full border border-gray-300 p-2 rounded mb-4" type="text" id="serviceLocation" name="serviceLocation" required>
+                    <input class="w-full border border-gray-300 p-2 rounded mb-4" type="text" id="serviceLocation"
+                        name="serviceLocation" required>
 
                     <label class="block text-gray-700" for="serviceImage">Service Image:</label>
-                    <input class="w-full border border-gray-300 p-2 rounded mb-4" type="file" id="serviceImage" name="serviceImage" required>
+                    <input class="w-full border border-gray-300 p-2 rounded mb-4" type="file" id="serviceImage"
+                        name="serviceImage" required>
 
-                    <button type="submit" class="btnmodal bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Post Service</button>
+                    <button type="submit"
+                        class="btnmodal bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Post
+                        Service</button>
                 </form>
             </div>
         </div>
 
         <section class="section1 mt-6">
             <section class="service-categories mb-4 flex flex-wrap gap-2">
-                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-category="" onclick="filterByCategory('')">All</button>
-                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-category="repairs" onclick="filterByCategory('repairs')">Repairs</button>
-                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-category="transport" onclick="filterByCategory('transport')">Transport</button>
-                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-category="tutoring" onclick="filterByCategory('tutoring')">Tutoring</button>
-                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-category="cleaning" onclick="filterByCategory('cleaning')">Cleaning</button>
+                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    data-category="" onclick="filterByCategory('')">All</button>
+                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    data-category="repairs" onclick="filterByCategory('repairs')">Repairs</button>
+                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    data-category="transport" onclick="filterByCategory('transport')">Transport</button>
+                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    data-category="tutoring" onclick="filterByCategory('tutoring')">Tutoring</button>
+                <button class="btn category-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    data-category="cleaning" onclick="filterByCategory('cleaning')">Cleaning</button>
             </section>
 
             <div class="service-list">
@@ -71,6 +86,21 @@
                 </ul>
             </div>
         </section>
+     <!-- Spinner Element -->
+<div id="spinner" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+    <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500"></div>
+</div>
+
+<div id="inquiryModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Make an Inquiry</h2>
+        <textarea id="inquiryMessage" placeholder="Type your inquiry here..." rows="4"></textarea>
+        <button id="submitInquiry" class="btn-small">Send Inquiry</button>
+    </div>
+</div>
+
+
     </main>
 
     <script src="/js/service-requests.js"></script>
@@ -89,7 +119,6 @@
             const formData = new FormData(event.target);
             const token = localStorage.getItem("userToken"); // Retrieve token from local storage
             const username = localStorage.getItem("username"); // Retrieve username from local storage
-            console.log("username", username)
 
             // Add username to formData
             if (username) {
@@ -120,7 +149,54 @@
                 alert('Error: ' + response.statusText);
             }
         });
+
+        async function fetchServices() {
+    // Show spinner before fetching
+    document.getElementById('spinner').classList.remove('hidden');
+
+    try {
+        const response = await fetch('http://localhost:5000/api/services');
+
+        // Check if response is OK (status in the range 200-299)
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const services = await response.json();
+
+        // Log the fetched services for debugging
+        console.log('Fetched services:', services);
+
+        // Ensure services is an array before processing
+        if (Array.isArray(services)) {
+            const servicesList = document.getElementById('services');
+            servicesList.innerHTML = ''; // Clear existing services
+
+            services.forEach(service => {
+                const li = document.createElement('li');
+                li.className = 'border p-2 rounded shadow';
+                li.textContent = `${service.title} - ${service.price} (${service.category})`;
+                servicesList.appendChild(li);
+            });
+        } else {
+            
+        }
+    } catch (error) {
+        console.error('Error fetching services:', error);
+        alert('There was an error fetching the services. Please try again later.');
+    } finally {
+        // Hide spinner after fetching
+        document.getElementById('spinner').classList.add('hidden');
+    }
+}
+
+        window.onload = () => {
+            console.log("Fetching services...");
+            fetchServices();
+        };
+
     </script>
+
 </body>
 
 </html>

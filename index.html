@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Hub - Connect, Engage, Thrive</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Include Font Awesome in the head of your HTML -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <script>
         tailwind.config = {
             theme: {
@@ -84,23 +87,31 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold text-center text-warmGray-800 mb-12">How We Empower Our Community</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300 cursor-pointer">
-                        <h3 class="text-xl font-semibold text-warmGray-800 mb-4">Connect Instantly</h3>
+                    <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300 cursor-pointer" id="chat-click">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-comments text-3xl text-warmGray-600 mr-2"></i>
+                            <h3 class="text-xl font-semibold text-warmGray-800">Connect Instantly</h3>
+                        </div>
                         <p class="text-warmGray-600">Stay informed with real-time updates and emergency alerts.</p>
                     </div>
                     <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300 cursor-pointer">
-                        <h3 class="text-xl font-semibold text-warmGray-800 mb-4">Engage Actively</h3>
-                        <p class="text-warmGray-600">Participate in local events, forums, and volunteer opportunities.
-                        </p>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-users text-3xl text-warmGray-600 mr-2"></i>
+                            <h3 class="text-xl font-semibold text-warmGray-800">Engage Actively</h3>
+                        </div>
+                        <p class="text-warmGray-600">Participate in local events, forums, and volunteer opportunities.</p>
                     </div>
-                    <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300 cursor-pointer"
-                        id="service-click">
-                        <h3 class="text-xl font-semibold text-warmGray-800 mb-4">Access Services</h3>
+                    <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300 cursor-pointer" id="service-click">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-tools text-3xl text-warmGray-600 mr-2"></i>
+                            <h3 class="text-xl font-semibold text-warmGray-800">Access Services</h3>
+                        </div>
                         <p class="text-warmGray-600">Easily request and track community services all in one place.</p>
                     </div>
                 </div>
             </div>
         </section>
+        
 
         <section class="py-16 bg-warmGray-100">
             <div class="container mx-auto px-4">
@@ -177,6 +188,11 @@
         goToServices.addEventListener('click', function () {
             console.log("click")
             window.location.href = 'html/service-request.html';
+        });
+        const goToChats = document.getElementById('chat-click');
+        goToServices.addEventListener('click', function () {
+            console.log("click")
+            window.location.href = 'https://chatting-o86j.onrender.com';
         });
     </script>
 </body>
