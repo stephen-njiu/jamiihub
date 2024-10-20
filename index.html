@@ -55,20 +55,39 @@
 </head>
 
 <body class="bg-warmGray-50 font-sans">
-    <header class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-4">
-            <nav class="flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold text-warmGray-800">Jamii Hub</a>
+    
+<header class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-4">
+        <nav class="flex justify-between items-center">
+            <!-- Logo: Visible on all screen sizes -->
+            <a href="#" class="text-2xl font-bold text-warmGray-800">Jamii Hub</a>
+
+            <!-- Links: Hidden on mobile, visible on medium (md) and larger screens -->
+            <div class="hidden md:flex space-x-6">
                 <ul class="flex space-x-6">
                     <li><a href="/html/dashboard.html" class="text-warmGray-600 hover:text-warmGray-900">Home</a></li>
-                    <li><a href="/html/service-request.html"
-                            class="text-warmGray-600 hover:text-warmGray-900">Services</a></li>
-                    
+                    <li><a href="/html/service-request.html" class="text-warmGray-600 hover:text-warmGray-900">Services</a></li>
                     <li><a href="/html/" class="text-warmGray-600 hover:text-warmGray-900">Connect</a></li>
                 </ul>
-            </nav>
+            </div>
+
+            <!-- Mobile Menu Button: Only visible on mobile -->
+            <button id="mobile-menu-button" class="md:hidden text-warmGray-800">
+                <!-- Icon for menu -->
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu: Hidden by default, shown when button is clicked -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <ul class="space-y-4 mt-4">
+                <li><a href="/html/dashboard.html" class="text-warmGray-600 hover:text-warmGray-900">Home</a></li>
+                <li><a href="/html/service-request.html" class="text-warmGray-600 hover:text-warmGray-900">Services</a></li>
+                <li><a href="/html/" class="text-warmGray-600 hover:text-warmGray-900">Connect</a></li>
+            </ul>
         </div>
-    </header>
+    </div>
+</header>
 
     <main>
         <section class="gradient-bg py-20">
@@ -181,6 +200,15 @@
             </div>
         </div>
     </footer>
+<script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', function () {
+        // Toggle the hidden class to show/hide the mobile menu
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
 
     <script>
         const goToServices = document.getElementById('service-click');
