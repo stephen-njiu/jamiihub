@@ -4,45 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Community Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --sidebar-width: 250px;
+            --header-height: 60px;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: var(--background-color);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #FDE68A 0%, #FCA5A5 100%);
+        }
+
+        .spinner {
+            display: none;
+        }
+
+        .loading .spinner {
+            display: inline-block;
+        }
+    </style>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        warmGray: {
-                            50: '#FAFAF9',
-                            100: '#F5F5F4',
-                            200: '#E7E5E4',
-                            300: '#D6D3D1',
-                            400: '#A8A29E',
-                            500: '#78716C',
-                            600: '#57534E',
-                            700: '#44403C',
-                            800: '#292524',
-                            900: '#1C1917',
-                        },
+                        primary: 'var(--primary-color)',
+                        secondary: 'var(--secondary-color)',
+                        background: 'var(--background-color)',
+                        text: 'var(--text-color)',
                     },
                 },
             },
         }
-    </script>
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #FDE68A 0%, #FCA5A5 100%);
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('registration-form');
+            const spinner = document.querySelector('.spinner');
+            const buttonText = document.getElementById('button-text');
+
+            form.classList.add('loading');
+            spinner.classList.remove('hidden');
+            buttonText.textContent = 'Registering...'; // Change button text
+
+            // Simulate a network request
+            setTimeout(() => {
+                form.reset();
+                form.classList.remove('loading');
+                spinner.classList.add('hidden');
+                buttonText.textContent = 'Register'; // Reset button text
+            }, 2000); // Simulated loading time
         }
-    </style>
+    </script>
 </head>
-<body class="bg-warmGray-50 font-sans">
+<body class="font-sans">
     <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4">
             <nav class="flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold text-warmGray-800">Community Hub</a>
+                <a href="#" class="text-2xl font-bold text-text">Community Hub</a>
                 <ul class="flex space-x-6">
-                    <li><a href="/html/dashboard.html" class="text-warmGray-600 hover:text-warmGray-900">Home</a></li>
-                    <li><a href="/html/service-request.html" class="text-warmGray-600 hover:text-warmGray-900">Services</a></li>
-                    <li><a href="/html/event-calendar.html" class="text-warmGray-600 hover:text-warmGray-900">Events</a></li>
-                    <li><a href="/html/" class="text-warmGray-600 hover:text-warmGray-900">Connect</a></li>
+                    <li><a href="/html/dashboard.html" class="text-text hover:text-primary">Home</a></li>
+                    <li><a href="/html/service-request.html" class="text-text hover:text-primary">Services</a></li>
+                    <li><a href="/html/event-calendar.html" class="text-text hover:text-primary">Events</a></li>
+                    <li><a href="/html/" class="text-text hover:text-primary">Connect</a></li>
                 </ul>
             </nav>
         </div>
@@ -51,38 +86,41 @@
     <main class="container mx-auto px-4 py-16">
         <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
             <header class="text-center mb-6">
-                <h1 class="text-2xl font-bold text-warmGray-800">Create Your Account</h1>
+                <h1 class="text-2xl font-bold text-text">Create Your Account</h1>
             </header>
 
-            <form id="registration-form">
+            <form id="registration-form" onsubmit="handleSubmit(event)">
                 <div class="form-group mb-4">
-                    <label for="fullname" class="block text-sm font-semibold text-warmGray-600">Full Name:</label>
-                    <input type="text" id="fullname" name="fullname" required class="mt-1 p-2 w-full border border-warmGray-300 rounded focus:outline-none focus:ring focus:ring-warmGray-400">
+                    <label for="fullname" class="block text-sm font-semibold text-text">Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" required class="mt-1 p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring focus:ring-primary">
                 </div>
 
                 <div class="form-group mb-4">
-                    <label for="email" class="block text-sm font-semibold text-warmGray-600">Email:</label>
-                    <input type="email" id="email" name="email" required class="mt-1 p-2 w-full border border-warmGray-300 rounded focus:outline-none focus:ring focus:ring-warmGray-400">
+                    <label for="email" class="block text-sm font-semibold text-text">Email:</label>
+                    <input type="email" id="email" name="email" required class="mt-1 p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring focus:ring-primary">
                 </div>
 
                 <div class="form-group mb-4">
-                    <label for="username" class="block text-sm font-semibold text-warmGray-600">Username:</label>
-                    <input type="text" id="username" name="username" required class="mt-1 p-2 w-full border border-warmGray-300 rounded focus:outline-none focus:ring focus:ring-warmGray-400">
+                    <label for="username" class="block text-sm font-semibold text-text">Username:</label>
+                    <input type="text" id="username" name="username" required class="mt-1 p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring focus:ring-primary">
                 </div>
 
                 <div class="form-group mb-6">
-                    <label for="password" class="block text-sm font-semibold text-warmGray-600">Password:</label>
-                    <input type="password" id="password" name="password" required class="mt-1 p-2 w-full border border-warmGray-300 rounded focus:outline-none focus:ring focus:ring-warmGray-400">
+                    <label for="password" class="block text-sm font-semibold text-text">Password:</label>
+                    <input type="password" id="password" name="password" required class="mt-1 p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring focus:ring-primary">
                 </div>
 
-                <button type="submit" class="w-full bg-warmGray-800 text-white py-3 rounded-lg hover:bg-warmGray-700 transition duration-300">Register</button>
+                <button type="submit" class="relative w-full bg-primary text-white py-3 rounded-lg hover:bg-secondary transition duration-300">
+                    <span id="spinner" class="spinner fa fa-refresh fa-spin hidden absolute left-1/2 transform -translate-x-1/2"></span>
+                    <span id="button-text">Register</span>
+                </button>
 
-                <p class="mt-4 text-center text-warmGray-600">Already have an account? <a href="login.html" class="text-warmGray-800 hover:underline">Login here</a></p>
+                <p class="mt-4 text-center text-text">Already have an account? <a href="login.html" class="text-primary hover:underline">Login here</a></p>
             </form>
         </div>
     </main>
 
-    <footer class="bg-warmGray-800 text-warmGray-200 py-8">
+    <footer class="bg-secondary text-white py-8">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; 2024 Community Hub. All rights reserved.</p>
         </div>

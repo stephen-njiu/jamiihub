@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,15 +29,28 @@
         }
     </script>
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #FDE68A 0%, #FCA5A5 100%);
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --sidebar-width: 250px;
+            --header-height: 60px;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
     </style>
 </head>
+
 <body class="bg-warmGray-50 font-sans">
     <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4">
@@ -44,8 +58,10 @@
                 <a href="#" class="text-2xl font-bold text-warmGray-800">Community Hub</a>
                 <ul class="flex space-x-6">
                     <li><a href="/html/dashboard.html" class="text-warmGray-600 hover:text-warmGray-900">Home</a></li>
-                    <li><a href="/html/service-request.html" class="text-warmGray-600 hover:text-warmGray-900">Services</a></li>
-                    <li><a href="/html/event-calendar.htmls" class="text-warmGray-600 hover:text-warmGray-900">Events</a></li>
+                    <li><a href="/html/service-request.html"
+                            class="text-warmGray-600 hover:text-warmGray-900">Services</a></li>
+                    <li><a href="/html/event-calendar.htmls"
+                            class="text-warmGray-600 hover:text-warmGray-900">Events</a></li>
                     <li><a href="/html/" class="text-warmGray-600 hover:text-warmGray-900">Connect</a></li>
                 </ul>
             </nav>
@@ -55,9 +71,12 @@
     <main>
         <section class="gradient-bg py-20">
             <div class="container mx-auto px-4 text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-warmGray-900 mb-6">Welcome to Your Community Hub</h1>
-                <p class="text-xl text-warmGray-800 mb-8">Connect, engage, and thrive together. Your platform for a stronger community.</p>
-                <a href="/html/register.html" class="bg-warmGray-800 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-warmGray-700 transition duration-300">Get Started</a>
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Welcome to Your Community Hub</h1>
+                <p class="text-xl text-warmGray-200 mb-8">Connect, engage, and thrive together. Your platform for a
+                    stronger community.</p>
+                <a href="/html/register.html"
+                    class="bg-warmGray-800 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-warmGray-700 transition duration-300">Get
+                    Started</a>
             </div>
         </section>
 
@@ -65,15 +84,17 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold text-center text-warmGray-800 mb-12">How We Empower Our Community</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300">
+                    <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300 cursor-pointer">
                         <h3 class="text-xl font-semibold text-warmGray-800 mb-4">Connect Instantly</h3>
                         <p class="text-warmGray-600">Stay informed with real-time updates and emergency alerts.</p>
                     </div>
-                    <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300">
+                    <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300 cursor-pointer">
                         <h3 class="text-xl font-semibold text-warmGray-800 mb-4">Engage Actively</h3>
-                        <p class="text-warmGray-600">Participate in local events, forums, and volunteer opportunities.</p>
+                        <p class="text-warmGray-600">Participate in local events, forums, and volunteer opportunities.
+                        </p>
                     </div>
-                    <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300">
+                    <div class="bg-warmGray-100 p-6 rounded-lg card-hover transition duration-300 cursor-pointer"
+                        id="service-click">
                         <h3 class="text-xl font-semibold text-warmGray-800 mb-4">Access Services</h3>
                         <p class="text-warmGray-600">Easily request and track community services all in one place.</p>
                     </div>
@@ -87,17 +108,20 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <h3 class="text-xl font-semibold text-warmGray-800 mb-2">Neighborhood Clean-up</h3>
-                        <p class="text-warmGray-600 mb-4">Join us this Saturday for our monthly community clean-up event.</p>
+                        <p class="text-warmGray-600 mb-4">Join us this Saturday for our monthly community clean-up
+                            event.</p>
                         <a href="#" class="text-warmGray-800 font-semibold hover:underline">Learn More</a>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <h3 class="text-xl font-semibold text-warmGray-800 mb-2">Local Art Fair</h3>
-                        <p class="text-warmGray-600 mb-4">Discover and support local artists at our upcoming art fair.</p>
+                        <p class="text-warmGray-600 mb-4">Discover and support local artists at our upcoming art fair.
+                        </p>
                         <a href="#" class="text-warmGray-800 font-semibold hover:underline">Learn More</a>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <h3 class="text-xl font-semibold text-warmGray-800 mb-2">Town Hall Meeting</h3>
-                        <p class="text-warmGray-600 mb-4">Voice your opinions at our next town hall meeting on community development.</p>
+                        <p class="text-warmGray-600 mb-4">Voice your opinions at our next town hall meeting on community
+                            development.</p>
                         <a href="#" class="text-warmGray-800 font-semibold hover:underline">Learn More</a>
                     </div>
                 </div>
@@ -108,7 +132,9 @@
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl font-bold text-warmGray-800 mb-8">Ready to Get Involved?</h2>
                 <p class="text-xl text-warmGray-600 mb-8">Join our community today and make a difference.</p>
-                <a href="#" class="bg-warmGray-800 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-warmGray-700 transition duration-300">Sign Up Now</a>
+                <a href="#"
+                    class="bg-warmGray-800 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-warmGray-700 transition duration-300">Sign
+                    Up Now</a>
             </div>
         </section>
     </main>
@@ -133,8 +159,10 @@
                     <h3 class="text-xl font-semibold mb-4">Stay Connected</h3>
                     <p>Sign up for our newsletter to stay updated.</p>
                     <form class="mt-4">
-                        <input type="email" placeholder="Enter your email" class="bg-warmGray-700 text-white px-4 py-2 rounded-l-full focus:outline-none">
-                        <button type="submit" class="bg-warmGray-600 text-white px-4 py-2 rounded-r-full hover:bg-warmGray-500 transition duration-300">Subscribe</button>
+                        <input type="email" placeholder="Enter your email"
+                            class="bg-warmGray-700 text-white px-4 py-2 rounded-l-full focus:outline-none">
+                        <button type="submit"
+                            class="bg-warmGray-600 text-white px-4 py-2 rounded-r-full hover:bg-warmGray-500 transition duration-300">Subscribe</button>
                     </form>
                 </div>
             </div>
@@ -143,5 +171,14 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const goToServices = document.getElementById('service-click');
+        goToServices.addEventListener('click', function () {
+            console.log("click")
+            window.location.href = 'html/service-request.html';
+        });
+    </script>
 </body>
+
 </html>

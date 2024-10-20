@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Community Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -29,13 +30,37 @@
         }
     </script>
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #FDE68A 0%, #FCA5A5 100%);
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --sidebar-width: 250px;
+            --header-height: 60px;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: var(--background-color);
+        }
+
+        .buttonload {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .buttonload:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .form-group label {
+            color: var(--text-color);
         }
     </style>
 </head>
 
-<body class="bg-warmGray-50 font-sans">
+<body class="font-sans">
     <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4">
             <nav class="flex justify-between items-center">
@@ -67,7 +92,10 @@
                     <input type="password" id="password" name="password" required class="mt-1 p-2 w-full border border-warmGray-300 rounded focus:outline-none focus:ring focus:ring-warmGray-400">
                 </div>
 
-                <button type="submit" class="w-full bg-warmGray-800 text-white py-3 rounded-lg hover:bg-warmGray-700 transition duration-300">Login</button>
+                <button id="login-button" type="submit" class="buttonload w-full py-3 rounded-lg transition duration-300">
+                    <i id="spinner" class="fa fa-refresh fa-spin hidden"></i> <!-- Initially hidden -->
+                    <span id="button-text">Login</span> <!-- Text element to control text -->
+                </button>
 
                 <p class="mt-4 text-center text-warmGray-600"><a href="#" class="text-warmGray-800 hover:underline">Forgot your password?</a></p>
                 <p class="mt-2 text-center text-warmGray-600">Don't have an account? <a href="register.html" class="text-warmGray-800 hover:underline">Register here</a></p>
@@ -75,11 +103,6 @@
         </div>
     </main>
 
-    <footer class="bg-warmGray-800 text-warmGray-200 py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2024 Community Hub. All rights reserved.</p>
-        </div>
-    </footer>
 
     <!-- Link to Firebase -->
     <script type="module" src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js"></script>
@@ -90,7 +113,7 @@
         // Import Firebase functions
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-
+    
         // Your Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBY-MNDLfjzuN41Wg56NYDPwNxwgnopJ9s", // Replace with your API key
@@ -100,41 +123,52 @@
             messagingSenderId: "707961341565", // Replace with your Messaging Sender ID
             appId: "1:707961341565:web:45f6e221d9ea2750b7d314" // Replace with your App ID
         };
-
+    
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-
+    
         // Handle form submission
         const loginForm = document.getElementById('login-form');
+        const loginButton = document.getElementById('login-button');
+        const spinner = document.getElementById('spinner');
+        const buttonText = document.getElementById('button-text');
+    
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault(); // Prevent form from submitting normally
-
+    
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-
+    
+            // Start spinner
+            spinner.classList.remove('hidden'); // Show spinner
+            buttonText.textContent = 'Logging in...'; // Change button text
+    
             try {
                 // Sign in with Firebase Authentication
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 console.log("User logged in successfully.");
-
+    
                 // Get the ID token
                 const user = userCredential.user;
                 const idToken = await user.getIdToken(); // Get the ID token
                 console.log("User ID Token:", idToken); // Log the ID token
-
+    
                 // Save the ID token in local storage (optional, for future use)
-                localStorage.setItem("userToken", idToken);
-
-                // Redirect to dashboard or another page
-                window.location.href = "dashboard.html"; 
+                localStorage.setItem("user_token", idToken);
+    
+                // Redirect to the dashboard or perform another action
+                window.location.href = "/html/dashboard.html"; // Redirect to dashboard after successful login
             } catch (error) {
-                console.error("Error logging in: ", error.message);
-                alert("Error logging in. Please check your email and password.");
+                console.error("Login error:", error);
+                alert("Login failed. Please check your email and password.");
+            } finally {
+                // Stop spinner
+                spinner.classList.add('hidden'); // Hide spinner
+                buttonText.textContent = 'Login'; // Reset button text
             }
         });
     </script>
-
 </body>
 
 </html>
